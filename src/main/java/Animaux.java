@@ -1,25 +1,29 @@
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 
 @Entity
+@Table(name = "Animaux")
 public class Animaux implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    @Column
     private String nom;
 
     public Animaux() {
     }
 
+    public Animaux(int id, String nom) {
+        this.id = id;
+        this.nom = nom;
+    }
+
     public int getId() {
         return id;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -33,10 +37,6 @@ public class Animaux implements Serializable {
         this.nom = nom;
     }
 
-    public Animaux(int id, String nom) {
-        this.id = id;
-        this.nom = nom;
-    }
 
     //pour convertir l'objet en chaine de caractères
     @Override
